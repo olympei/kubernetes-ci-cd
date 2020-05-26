@@ -1,39 +1,39 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-olympe
+  name: hello-kenzan
   labels:
-    app: hello-olympe
+    app: hello-kenzan
 spec:
   ports:
     - port: 80
       targetPort: 80
   selector:
-    app: hello-olympe
-    tier: web
+    app: hello-kenzan
+    tier: hello-kenzan
   type: NodePort
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-olympe
+  name: hello-kenzan
   labels:
-    app: hello-olympe
+    app: hello-kenzan
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello-olympe
+      app: hello-kenzan
   template:
     metadata:
       labels:
-        app: hello-olympe
-        tier: hello-olympe
+        app: hello-kenzan
+        tier: hello-kenzan
     spec:
       containers:
       - image: 127.0.0.1:30400/hello-olympe:latest
-        name: hello-olympe
+        name: hello-kenzan
         ports:
         - containerPort: 80
-          name: hello-olympe
+          name: hello-kenzan
